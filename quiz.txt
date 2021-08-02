@@ -1,0 +1,38 @@
+Add new functionality to your shell from lab 3.
+
+
+New Commands:
+remote_echo server text
+  Connects to computer with network address "server" and sends "text" via socket to the server.
+  The server will echo the message back to the client along with some header text
+  (note "server" and "text" will be set by the user.
+  Technical details below
+  
+remote_code server
+  Connects to computer with network address "server" via socket.  Your shell should send your shell n ame + your student id to the server, server will respond back with a string, you should print this string to the screen.
+  Technical details below
+  
+remote_msg server
+  Connects to computer with network address "server" via socket. The server will respond back with a text message, you should print this message to the screen.
+  Technical details below
+  
+Technical Details:
+The server will have two sockets to respond to your requests.
+One socket on port number 3494 remote_echo and remote_code will send the message needed for remote_msg
+One socket on port 3496 will handle both remote_echo and remote_code. The socket will look at the ifrst byte of your message to determine which request it should respond to.  If the first byte is SOH (0x01) it will respond with an echo.  If the first byte is SOT (0x02) it will respond with the code.
+
+
+
+
+Grading:
+
+Connection:
+  Your shell connects to the correct seerver and port for each new Commands 1 point
+  Your shell implements remote_echo 3 points
+  Your shell implements remote_code 3 points
+  Your shell implements remote_msg 3 points
+
+Penalties: 
+  Not including your name and id printable in the shell: -5
+
+Your program should not crash, unless my sample implementation also crashes with the same input.

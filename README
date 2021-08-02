@@ -1,0 +1,2 @@
+compile with
+    gcc remote.c lab3.c -L/usr/include -lreadline 
